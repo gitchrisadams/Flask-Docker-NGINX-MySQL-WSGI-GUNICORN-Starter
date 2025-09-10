@@ -59,7 +59,7 @@ After the application starts, navigate to `http://localhost:8000` in your web br
 
 ### Create a user
 
-`http://localhost:8000/add_user/whateveruseryourwant`
+`http://localhost:8000/add_user?email=chrismichaeladams+3@gmail.com&first_name=Chris3&password=password`
 
 ### View all users
 

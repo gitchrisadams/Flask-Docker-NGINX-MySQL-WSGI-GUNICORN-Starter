@@ -18,7 +18,7 @@ services:
     command: /app/start.sh
 
   flask-app:
-    build: flask
+    build: website
     restart: always
     ports: 
       - '8000:8000'
