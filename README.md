@@ -57,13 +57,21 @@ After the application starts, navigate to `http://localhost:8000` in your web br
 
 ## Visiting endpoints
 
-### Create a user
+### Create a user example:
 
-`http://localhost:8000/add_user?email=chrismichaeladams+3@gmail.com&first_name=Chris3&password=password`
+`http://localhost:8000/add_user/chrismichaeladams+3@gmail.com?first_name=Chris3&password=password`
 
-### View all users
+### View all users example:
 
 `http://localhost:8000/view_users`
+
+### Delete user by email example:
+
+`http://localhost:8000/delete_by_email/chrismichaeladams+3@gmail.com`
+
+### Update a User Example - First email is email to update, second is new email
+
+`http://localhost:8000/update_by_email/chrismichaeladams@gmail.com/chrismichaeladamsNewEmail@gmail.com?first_name=ChrisNewAgain&password=passwordNewAgain`
 
 Stop and remove the containers
 

@@ -44,11 +44,21 @@ with app.app_context():
     db.create_all()
 
 # ******************************** Views **************************************
+# Shows example of passing variable to a template
 @app.route('/')
 def hello():
     myvar = "hello myvar"
     return render_template("index.html", myvar=myvar)
 
+# CREATE
+@app.route('/add_user/<email>')
+def add_user(email):
+    user = User(email=email, first_name=request.args.get('first_name'), password=request.args.get('password'))
+    db.session.add(user)
+    db.session.commit()
+    return "User added..." + user.email
+
+# READ
 @app.route('/view_users')
 def view_users():
     users = User.query.all()
@@ -57,13 +67,29 @@ def view_users():
         all_users.append([user.first_name, user.email, user.password])
     return all_users
 
+# UPDATE
+@app.route('/update_by_email/<email>/<newemail>')
+def update_by_email(email, newemail):
+    user_to_update = User.query.filter_by(email=email).first()
 
-@app.route('/add_user')
-def add_user():
-    user = User(email=request.args.get('email'), first_name=request.args.get('first_name'), password=request.args.get('password'))
-    db.session.add(user)
-    db.session.commit()
-    return "User added..." + user.email
+    if user_to_update:
+        user_to_update.email = newemail
+        user_to_update.first_name = request.args.get("first_name")
+        user_to_update.password = request.args.get("password")
+        db.session.commit()
+        return "User has been updated!"
+
+# DELETE
+@app.route('/delete_by_email/<email>')
+def delete_user(email):
+    user_to_delete = User.query.filter_by(email=email).first()
+    if user_to_delete:
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        return "User Deleted"
+    else:
+        return "User Not Found"
+
 
 @app.route('/cache-me')
 def cache():
