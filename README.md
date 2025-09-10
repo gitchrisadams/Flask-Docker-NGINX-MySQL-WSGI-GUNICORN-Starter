@@ -109,3 +109,10 @@ A couple of sample endpoints are provided in this `docker-compose` example:
 * `/` - Returns a "Hello World!" string.
 * `/cache-me` - Returns a string which is cached by the NGINX reverse proxy. This demonstrates an intermediary cache implementation.
 * `/info` - Returns informational headers about the request. Some are passed from NGINX for added client visibility.
+
+# Docker-Compose Env 
+
+Use the .env.template and change this:
+`DATABASE_URL=mysql+pymysql://username:password@DockerDatabaseServiceName/databaseName`
+add your own information in this string and update other env vars
+Save a new file as .env that will NOT be checked into version management.
