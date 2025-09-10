@@ -10,6 +10,7 @@ compose.yaml
 .gitignore
 README.md
 .env.template (rename or create a .env, use as guide)
+.env
 flask
   app.py
   Dockerfile
@@ -20,21 +21,6 @@ nginx
   Dockerfile
   nginx.conf
   start.sh
-```
-
-[_compose.yaml_](compose.yaml)
-
-```yml
-services:
-  nginx-proxy:
-    build: nginx
-    ports:
-    - 80:80
-  flask-app:
-    build: flask
-  database:
-    image: mysql
-    ...
 ```
 
 The compose file defines an application with two services `nginx-proxy` and `flask-app`.
@@ -67,12 +53,17 @@ bde3f29cf571   ...nginx-proxy   "/docker-entrypoint.…"   About a minute ago   
 2428f799adc2   mysql                             "docker-entrypoint.s…"   6 minutes ago   Up 6 minutes (healthy)   0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp   nginx-wsgi-flask-db-database-1
 ```
 
-After the application starts, navigate to `http://localhost:80` in your web browser or run:
+After the application starts, navigate to `http://localhost:8000` in your web browser or run:
 
-```bash
-$ curl localhost:80
-Hello World!
-```
+## Visiting endpoints
+
+### Create a user
+
+`http://localhost:8000/add_user/whateveruseryourwant`
+
+### View all users
+
+`http://localhost:8000/view_users`
 
 Stop and remove the containers
 
