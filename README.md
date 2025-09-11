@@ -28,6 +28,14 @@ When deploying the application, docker compose maps port 80 of the web service c
 
 Make sure port 80 on the host is not being used by another container, otherwise the port should be changed.
 
+## Running app locally:
+
+Use the Sqlite local option for db, uncomment and run:
+
+`flask run` 
+
+from the website directory
+
 ## First time run of docker-compose:
 
 `docker compose up --build`

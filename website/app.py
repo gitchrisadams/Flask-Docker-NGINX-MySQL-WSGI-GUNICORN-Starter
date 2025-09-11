@@ -16,8 +16,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'mysql+py
 # PostGres and MYSQL:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# SQL Lite:
+# SQL Lite Docker:
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////my/sqlite/path/sqlite.db'
+
+# SQL Lite Local dev:
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///testdb.sqlite"
 
 db = SQLAlchemy(app)
 
