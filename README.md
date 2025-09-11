@@ -28,6 +28,14 @@ When deploying the application, docker compose maps port 80 of the web service c
 
 Make sure port 80 on the host is not being used by another container, otherwise the port should be changed.
 
+## First time run of docker-compose:
+
+`docker compose up --build`
+
+You may see errors on first run while database is being created. Just CTL-C and run again:
+
+`docker compose up --build`
+
 ## Deploy with docker compose
 
 ```bash

@@ -7,8 +7,17 @@ import os
 
 app = Flask(__name__)
 
+# MYSQL Database:
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'mysql+pymysql://user:password@db/mydatabase')
+
+# Postgres Database:
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+
+# PostGres and MYSQL:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# SQL Lite:
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////my/sqlite/path/sqlite.db'
 
 db = SQLAlchemy(app)
 
